@@ -4,8 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "build": "rollup -c",
     "lint": "eslint **/*.js",
     "lint:fix": "eslint **/*.js --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run lint:fix",
+      "git add"
+    ]
   },
   "author": "AlexeyZ",
   "license": "ISC",
@@ -13,7 +27,11 @@
     "eslint": "^6.7.0",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-react": "^7.16.0",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.4.3",
     "prettier": "^1.19.1",
-    "rollup": "^1.27.4"
+    "rimraf": "^3.0.0",
+    "rollup": "^1.27.4",
+    "rollup-plugin-node-resolve": "^5.2.0"
   }
 }

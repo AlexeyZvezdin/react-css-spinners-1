@@ -1,3 +1,5 @@
-let { log } = console;
+import React from 'react';
 
-log('Hello!');
+const Spinner = props => <h1>Spinner</h1>;
+
+export default Spinner;
